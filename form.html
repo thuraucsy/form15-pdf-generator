@@ -1,0 +1,546 @@
+<html lang="my">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Form-15 Generator</title>
+  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/earlyaccess/tharlon.css" rel="stylesheet">
+  <style>
+    .mm-font {
+      font-family: 'Tharlon', sans-serif;
+    }
+    .container {
+      padding-top: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6  column col-sm-offset-0 col-md-offset-2 col-lg-offset-3">
+        <form class="form-horizontal" id="app">
+          <fieldset>
+
+            <!-- Form Name -->
+            <legend class="mm-font">ပုံစံ၁၅ PDF Generator</legend>
+            <small>We'll never share your personal data with anyone else.</small><br>
+            <small class="mm-font">သင့်ရဲ့ ကိုယ်ရေးအချက်အလက်တွေကို ဘယ်သူနဲ့မှ မျှဝေမှာမဟုတ်ပါဘူး။ ဒီ PDF Generator tools ကိုဖန်တီးခဲ့ရတဲ့ အဓိကရည်ရွယ်ချက်ကလည်း အဲဒါပဲ ဖြစ်ပါတယ်။ PDF Generate လုပ်တဲ့အလုပ်တွေအကုန်လုံးကို Server ပေါ်မတင်ဘဲ Browser ထဲမှာပဲ အလုပ်လုပ်နိုင်အောင် ဖန်တီးထားပါတယ်။</small>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-6 control-label mm-font" for="textinput1">မြို့နယ်ကော်မရှင်အဖွဲ့ခွဲ</label>
+              <div class="col-md-6">
+                <input id="textinput1" name="textinput1" type="text" placeholder="တာမွေ" class="form-control input-md" v-model="data.textinput1" v-on:change="saveToLocalStorage">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-6 control-label mm-font" for="radios">ကျား/မ</label>
+              <div class="col-md-6">
+                <label class="radio-inline" for="radios-0">
+                  <input type="radio" name="radios" id="radios-0" value="1" v-model="data.radio" v-on:change="saveToLocalStorage">
+                  ကျွန်တော်
+                </label>
+                <label class="radio-inline" for="radios-1">
+                  <input type="radio" name="radios" id="radios-1" value="2" v-model="data.radio" v-on:change="saveToLocalStorage">
+                  ကျွန်မ
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-6 control-label mm-font" for="textinput2">အမည်</label>
+              <div class="col-md-6">
+                <input id="textinput2" name="textinput2" type="text" placeholder="အောင်အောင်" class="form-control input-md" v-model="data.textinput2" v-on:change="saveToLocalStorage">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-6 control-label mm-font" for="textinput3">တိုင်းရင်းသားလူမျိုး</label>
+              <div class="col-md-6">
+                <input id="textinput3" name="textinput3" type="text" placeholder="ဗမာ" class="form-control input-md" v-model="data.textinput3" v-on:change="saveToLocalStorage">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-6 control-label mm-font" for="textinput4">မှတ်ပုံတင်အမှတ်</label>
+              <div class="col-md-6">
+                <input id="textinput4" name="textinput4" type="text" placeholder="၁၂/xxx(x)123456" class="form-control input-md" v-model="data.textinput4" v-on:change="saveToLocalStorage">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-6 control-label mm-font" for="textinput5">မွေးသက္ကရာဇ်: </label>
+              <div class="col-md-6">
+                <input id="textinput5" name="textinput5" type="date" class="form-control input-md" v-model="data.textinput5" v-on:change="saveToLocalStorage">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-6 control-label mm-font" for="textinput6">အဘအမည်</label>
+              <div class="col-md-6">
+                <input id="textinput6" name="textinput6" type="text" placeholder="ဦးအောင်" class="form-control input-md" v-model="data.textinput6" v-on:change="saveToLocalStorage">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-6 control-label mm-font" for="textinput7">အမိအမည်</label>
+              <div class="col-md-6">
+                <input id="textinput7" name="textinput7" type="text" placeholder="ဒေါ်မြ" class="form-control input-md" v-model="data.textinput7" v-on:change="saveToLocalStorage">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-6 control-label mm-font" for="textinput8">နေရပ်လိပ်စာအမှတ်</label>
+              <div class="col-md-6">
+                <input id="textinput8" name="textinput8" type="text" placeholder="၂၀" class="form-control input-md" v-model="data.textinput8" v-on:change="saveToLocalStorage">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-6">
+                <input id="textinput9" name="textinput9" type="text" placeholder="ဇောတိက" class="form-control input-md" v-model="data.textinput9" v-on:change="saveToLocalStorage">
+              </div>
+              <label class="col-md-3 control-label mm-font" for="selectbasic1">လမ်း/ကျေးရွာ</label>
+              <div class="col-md-3">
+                <select id="selectbasic1" name="selectbasic1" class="form-control" v-model="data.selectbasic1" v-on:change="saveToLocalStorage">
+                  <option value="1">လမ်း</option>
+                  <option value="2">ကျေးရွာ</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-6">
+                <input id="textinput10" name="textinput10" type="text" placeholder="မလွှကုန်း" class="form-control input-md" v-model="data.textinput10" v-on:change="saveToLocalStorage">
+              </div>
+              <label class="col-md-3 control-label mm-font" for="selectbasic2">ရပ်ကွက်/ကျေးရွာအုပ်စု</label>
+              <div class="col-md-3">
+                <select id="selectbasic2" name="selectbasic2" class="form-control" v-model="data.selectbasic2" v-on:change="saveToLocalStorage">
+                  <option value="1">ရပ်ကွက်</option>
+                  <option value="2">ကျေးရွာအုပ်စု</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-6">
+                <input id="textinput11" name="textinput11" type="text" placeholder="ရန်ကုန်" class="form-control input-md" v-model="data.textinput11" v-on:change="saveToLocalStorage">
+              </div>
+              <label class="col-md-3 control-label mm-font" for="selectbasic3">တိုင်းဒေသကြီး/ပြည်နယ်</label>
+              <div class="col-md-3">
+                <select id="selectbasic3" name="selectbasic3" class="form-control" v-model="data.selectbasic3" v-on:change="saveToLocalStorage">
+                  <option value="1">တိုင်းဒေသကြီး</option>
+                  <option value="2">ပြည်နယ်</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label mm-font" for="textarea">ပြည်ပနေရပ်လိပ်စာ<br>(အင်္ဂလိပ်လိုဖြင့်ဖြည့်ပေးပါရန်နှင့် အင်္ဂလိပ်စာလုံး အလုံး၃၀ခန့်ပြီးတိုင်း တစ်ကြောင်းဆင်းပြီး ရေးပေးပါရန်)</label>
+              <div class="col-md-9">
+                <textarea class="form-control" id="textarea" name="textarea" rows="3" v-model="data.textarea" v-on:change="saveToLocalStorage"></textarea>
+              </div>
+           </div>
+           <div class="form-group">
+             <label class="col-md-6 control-label mm-font" for="textinput12">ဖောင်တင်ရက်စွဲ: </label>
+             <div class="col-md-6">
+               <input id="textinput12" name="textinput12" type="date" class="form-control input-md" v-model="data.textinput12" v-on:change="saveToLocalStorage">
+             </div>
+           </div>
+           <div class="form-group">
+             <label class="col-md-6 control-label mm-font" for="selectbasic">လက်မှတ်</label>
+             <div class="col-md-6">
+               <canvas id="canvas" width="300" height="300" style="background: #eee;"></canvas>
+               <button type="button" class="btn btn-danger mm-font" name="button" onclick="clearSignature();">လက်မှတ်ပြန်ဖျက်ရန်</button>
+             </div>
+           </div>
+
+            <!-- Button (Double) -->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="button1id"></label>
+              <div class="col-md-8">
+                <button id="button1id" name="button1id" class="btn btn-success" onclick="event.preventDefault();generatePdf();">PDF Generate</button>
+              </div>
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/pdf-lib@1.4.0"></script>
+  <script src="https://unpkg.com/@pdf-lib/fontkit@1.0.0"></script>
+  <script src="https://unpkg.com/downloadjs@1.4.7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/myanmar-tools/1.1.3/zawgyi_detector.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/myanmar-tools/1.1.3/zawgyi_converter.min.js"></script>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        data: {
+          radio: '1',
+          selectbasic1: '1',
+          selectbasic2: '1',
+          selectbasic3: '1',
+          textarea: '',
+          textinput1: '',
+          textinput2: '',
+          textinput3: '',
+          textinput4: '',
+          textinput5: '1990-12-31',
+          textinput6: '',
+          textinput7: '',
+          textinput8: '',
+          textinput9: '',
+          textinput10: '',
+          textinput11: '',
+          textinput12: '',
+        }
+      },
+      methods: {
+        saveToLocalStorage: function() {
+          console.log(`saveToLocalStorage`, this.data);
+          localStorage.data = JSON.stringify(this.data);
+        }
+      },
+      created() {
+        console.log('Component has been created!');
+        if (localStorage.data) {
+          this.data = JSON.parse(localStorage.data);
+        }
+      }
+    })
+
+    const { degrees, PDFDocument, rgb, StandardFonts } = PDFLib
+    var canvas = document.querySelector("canvas");
+    var signaturePad = new SignaturePad(canvas);
+    const detector = new google_myanmar_tools.ZawgyiDetector();
+    const converter = new google_myanmar_tools.ZawgyiConverter();
+
+    function _base64ToArrayBuffer(base64) {
+      var binary_string = window.atob(base64);
+      var len = binary_string.length;
+      var bytes = new Uint8Array(len);
+      for (var i = 0; i < len; i++) {
+          bytes[i] = binary_string.charCodeAt(i);
+      }
+      return bytes.buffer;
+    }
+
+    function clearSignature() {
+      signaturePad.clear();
+    }
+
+    function isZawgyi() {
+      let myanmarTextInputs = ['textinput1', 'textinput2', 'textinput3', 'textinput4', 'textinput6', 'textinput7', 'textinput8', 'textinput9', 'textinput10', 'textinput11'];
+      return detector.getZawgyiProbability(myanmarTextInputs.map(x => app.data[x]).join("")) > 0.05;
+    }
+
+    function getConvertedText(mm) {
+      if (isZawgyi) {
+        mm = converter.unicodeToZawgyi(mm);
+      }
+      return mm;
+    }
+
+    function changeToMmDigit(char) {
+      let mmDigits = {
+          1: '၁',
+          2: '၂',
+          3: '၃',
+          4: '၄',
+          5: '၅',
+          6: '၆',
+          7: '၇',
+          8: '၈',
+          9: '၉',
+          0: '၀',
+      }
+      return mmDigits[char] ? mmDigits[char] : char;
+    }
+
+    function getMmDate(textinput) {
+      if (!app.data[textinput]) {
+        return '';
+      }
+      let mmDate = app.data[textinput].split("-").map(x => parseInt(x)).join("-").replace(/(\d{4})-(\d{1,2})-(\d{1,2})/, "$3ရက်/$2လ/$1ခုနှစ်").split("").map(x => changeToMmDigit(x)).join("");
+      console.log(`mmDate`, mmDate);
+      return mmDate;
+    }
+
+    function calculateAge(dob) {
+        var diff_ms = Date.now() - dob.getTime();
+        var age_dt = new Date(diff_ms);
+        var age = Math.abs(age_dt.getUTCFullYear() - 1970);
+        return age.toString().split("").map(x => changeToMmDigit(x)).join("") + getConvertedText('နှစ်');
+    }
+
+    async function generatePdf() {
+      console.log(`generatePdf`);
+      // Fetch an existing PDF document
+      const url = 'form15.pdf'
+      // const url = 'https://pdf-lib.js.org/assets/with_update_sections.pdf'
+      const existingPdfBytes = await fetch(url).then(res => res.arrayBuffer())
+
+      // Load a PDFDocument from the existing PDF bytes
+      const pdfDoc = await PDFDocument.load(existingPdfBytes)
+
+      // custom font
+      pdfDoc.registerFontkit(fontkit)
+      const fontBytes = await fetch('Zawgyi-One_V3.1.ttf').then((res) => res.arrayBuffer())
+
+      // Embed our custom font in the document
+      const customFont = await pdfDoc.embedFont(fontBytes)
+
+      // Embed the Helvetica font
+      const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica)
+
+      // Get the first page of the document
+      const pages = pdfDoc.getPages()
+      pdfDoc.removePage(1)
+      const firstPage = pages[0]
+
+      // Get the width and height of the first page
+      const { width, height } = firstPage.getSize()
+
+      // Draw a string of text diagonally across the first page
+      // firstPage.drawText('This text was added with JavaScript!', {
+      //   x: 5,
+      //   y: height / 2 + 300,
+      //   size: 50,
+      //   font: helveticaFont,
+      //   rotate: degrees(-45),
+      // })
+      firstPage.drawText(getConvertedText(app.data['textinput1']), {
+        x: 90,
+        y: 680,
+        size: 11,
+        font: customFont,
+      })
+      if (app.data.radio == 1) {
+        firstPage.drawText('_____', {
+          x: 160,
+          y: 655,
+          size: 11,
+          font: customFont,
+        })
+      } else {
+        firstPage.drawText('_______', {
+          x: 110,
+          y: 655,
+          size: 11,
+          font: customFont,
+        })
+      }
+      firstPage.drawText(getConvertedText(app.data['textinput2']), {
+        x: 195,
+        y: 655,
+        size: 11,
+        font: customFont,
+      })
+      firstPage.drawText('၂၀၂၀', {
+        x: 320,
+        y: 655,
+        size: 11,
+        font: customFont,
+      })
+      if (app.data.radio == 1) {
+        firstPage.drawText('_____', {
+          x: 437,
+          y: 634,
+          size: 11,
+          font: customFont,
+        })
+      } else {
+        firstPage.drawText('_______', {
+          x: 387,
+          y: 634,
+          size: 11,
+          font: customFont,
+        })
+      }
+      if (app.data.radio == 1) {
+        firstPage.drawText('_____', {
+          x: 323,
+          y: 612,
+          size: 11,
+          font: customFont,
+        })
+      } else {
+        firstPage.drawText('_______', {
+          x: 273,
+          y: 612,
+          size: 11,
+          font: customFont,
+        })
+      }
+
+      firstPage.drawText(getConvertedText(app.data['textinput2']), {
+        x: 310,
+        y: 560,
+        size: 11,
+        font: customFont,
+      })
+      firstPage.drawText(getConvertedText(app.data['textinput3']), {
+      // firstPage.drawText('ရခိုင္', {
+        x: 310,
+        y: 535,
+        size: 11,
+        font: customFont,
+      })
+      firstPage.drawText(getConvertedText(app.data['textinput4']), {
+        x: 310,
+        y: 510,
+        size: 11,
+        font: customFont,
+      })
+      firstPage.drawText(`${getConvertedText(getMmDate('textinput5'))} (${calculateAge(new Date(app.data['textinput5']))})`, {
+        x: 310,
+        y: 486,
+        size: 11,
+        font: customFont,
+      })
+      firstPage.drawText(getConvertedText(app.data['textinput6']), {
+        x: 310,
+        y: 461,
+        size: 11,
+        font: customFont,
+      })
+      firstPage.drawText(getConvertedText(app.data['textinput7']), {
+        x: 310,
+        y: 436,
+        size: 11,
+        font: customFont,
+      })
+      firstPage.drawText(getConvertedText(app.data['textinput8']), {
+        x: 364,
+        y: 407,
+        size: 11,
+        font: customFont,
+      })
+      // firstPage.drawText('သမိန္ဘရမ္း', {
+      firstPage.drawText(getConvertedText(app.data['textinput9']), {
+        x: 130,
+        y: 387,
+        size: 8,
+        font: customFont,
+      })
+      if (app.data.selectbasic1 == 1) {
+        firstPage.drawText('______', {
+          x: 231,
+          y: 387,
+          size: 11,
+          font: customFont,
+        })
+
+      } else {
+        firstPage.drawText('_____', {
+          x: 200,
+          y: 387,
+          size: 11,
+          font: customFont,
+        })
+      }
+      firstPage.drawText(getConvertedText(app.data['textinput10']), {
+        x: 272,
+        y: 387,
+        size: 8,
+        font: customFont,
+      })
+      if (app.data.selectbasic2 == 1) {
+        firstPage.drawText('__________', {
+          x: 395,
+          y: 387,
+          size: 11,
+          font: customFont,
+        })
+      } else {
+        firstPage.drawText('______', {
+          x: 350,
+          y: 387,
+          size: 11,
+          font: customFont,
+        })
+      }
+      firstPage.drawText(getConvertedText(app.data['textinput1']), {
+        x: 130,
+        y: 362,
+        size: 8,
+        font: customFont,
+      })
+      // firstPage.drawText('တနသၤာရီ', {
+      firstPage.drawText(getConvertedText(app.data['textinput11']), {
+        x: 260,
+        y: 362,
+        size: 8,
+        font: customFont,
+      })
+      if (app.data.selectbasic3 == 1) {
+        firstPage.drawText('_______', {
+          x: 420,
+          y: 362,
+          size: 11,
+          font: customFont,
+        })
+      } else {
+        firstPage.drawText('__________', {
+          x: 350,
+          y: 362,
+          size: 11,
+          font: customFont,
+        })
+      }
+      firstPage.drawText(app.data.textarea.split("\n").length >= 1 ? app.data.textarea.split("\n")[0] : '', {
+        x: 320,
+        y: 287,
+        size: 11,
+        font: customFont,
+      })
+      firstPage.drawText(app.data.textarea.split("\n").length >= 2 ? app.data.textarea.split("\n")[1] : '', {
+        x: 320,
+        y: 262,
+        size: 11,
+        font: customFont,
+      })
+      firstPage.drawText(app.data.textarea.split("\n").length >= 3 ? app.data.textarea.split("\n")[2] : '', {
+        x: 130,
+        y: 237,
+        size: 11,
+        font: customFont,
+      })
+      firstPage.drawText(getConvertedText(getMmDate('textinput12')), {
+        x: 110,
+        y: 145,
+        size: 11,
+        font: customFont,
+      })
+
+      // custom image
+      // const pngImageBytes = await fetch('signature.png').then(function(res) {
+      //   console.log(`res`, res);
+      //   return res.arrayBuffer();
+      //   // _base64ToArrayBuffer(signaturePad.toDataURL().substr("22"))
+      // })
+
+      var dataUrl = signaturePad.toDataURL();
+      const pngImageBytes = _base64ToArrayBuffer(dataUrl.substr("22"))
+
+      // console.log(`dataUrl`, dataUrl);
+      // console.log(`pngImageBytes`, pngImageBytes);
+      const pngImage = await pdfDoc.embedPng(pngImageBytes)
+      // Get the width/height of the PNG image scaled down to 50% of its original size
+      const pngDims = pngImage.scale(0.8)
+      firstPage.drawImage(pngImage, {
+        x: 480,
+        y: 175,
+        width: 100,
+        height: 50,
+      })
+
+      // Serialize the PDFDocument to bytes (a Uint8Array)
+      const pdfBytes = await pdfDoc.save()
+
+      // Trigger the browser to download the PDF document
+      download(pdfBytes, "form-15-for-2020_election.pdf", "application/pdf");
+    }
+  </script>
+
+</body>
+
+</html>
