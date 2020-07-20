@@ -280,30 +280,30 @@
     async function generatePdf() {
       console.log(`generatePdf`);
 
-      let validationInputs = {
-        textinput1: "မြို့နယ်ကော်မရှင်အဖွဲ့ခွဲ",
-        textinput2: "အမည်",
-        textinput3: "တိုင်းရင်းသားလူမျိုး",
-        textinput4: "မှတ်ပုံတင်အမှတ်",
-        textinput5: "မွေးသက္ကရာဇ်",
-        textinput6: "အဘအမည်",
-        textinput7: "အမိအမည်",
-        textinput8: "နေရပ်လိပ်စာ အမှတ်",
-        textinput9: "နေရပ်လိပ်စာ လမ်း/ကျေးရွာ",
-        textinput10: "နေရပ်လိပ်စာ ရပ်ကွက်/ကျေးရွာအုပ်စု",
-        textinput11: "နေရပ်လိပ်စာ တိုင်းဒေသကြီး/ပြည်နယ်",
-        textinput12: "ဖောင်တင်ရက်စွဲ",
-        textarea: "ပြည်ပနေရပ်လိပ်စာ",
-      }
-      let alertArr = [];
-      for (let key in validationInputs) {
-          if (!app.data[key]) {
-              alertArr.push(validationInputs[key]);
-          }
-      }
-      if (alertArr.length > 0) {
-        alert(`အောက်ပါအချက်အလက်များမဖြည့်ရသေးဘဲ PDF Generate ပြုလုပ်ပေးပါမည် \n\n${alertArr.join("\n")}`);
-      }
+      // let validationInputs = {
+      //   textinput1: "မြို့နယ်ကော်မရှင်အဖွဲ့ခွဲ",
+      //   textinput2: "အမည်",
+      //   textinput3: "တိုင်းရင်းသားလူမျိုး",
+      //   textinput4: "မှတ်ပုံတင်အမှတ်",
+      //   textinput5: "မွေးသက္ကရာဇ်",
+      //   textinput6: "အဘအမည်",
+      //   textinput7: "အမိအမည်",
+      //   textinput8: "နေရပ်လိပ်စာ အမှတ်",
+      //   textinput9: "နေရပ်လိပ်စာ လမ်း/ကျေးရွာ",
+      //   textinput10: "နေရပ်လိပ်စာ ရပ်ကွက်/ကျေးရွာအုပ်စု",
+      //   textinput11: "နေရပ်လိပ်စာ တိုင်းဒေသကြီး/ပြည်နယ်",
+      //   textinput12: "ဖောင်တင်ရက်စွဲ",
+      //   textarea: "ပြည်ပနေရပ်လိပ်စာ",
+      // }
+      // let alertArr = [];
+      // for (let key in validationInputs) {
+      //     if (!app.data[key]) {
+      //         alertArr.push(validationInputs[key]);
+      //     }
+      // }
+      // if (alertArr.length > 0) {
+      //   alert(`အောက်ပါအချက်အလက်များမဖြည့်ရသေးဘဲ PDF Generate ပြုလုပ်ပေးပါမည် \n\n${alertArr.join("\n")}`);
+      // }
 
       // Fetch an existing PDF document
       const url = 'form15.pdf'
