@@ -239,7 +239,7 @@
     }
 
     function getConvertedText(mm) {
-      if (isZawgyi) {
+      if (!isZawgyi()) {
         mm = converter.unicodeToZawgyi(mm);
       }
       return mm;
@@ -267,6 +267,9 @@
       }
       let mmDate = app.data[textinput].split("-").map(x => parseInt(x)).join("-").replace(/(\d{4})-(\d{1,2})-(\d{1,2})/, "$3ရက်/$2လ/$1ခုနှစ်").split("").map(x => changeToMmDigit(x)).join("");
       console.log(`mmDate`, mmDate);
+      if (!(detector.getZawgyiProbability(mmDate) > 0.05)) {
+        mmDate = converter.unicodeToZawgyi(mmDate);
+      }
       return mmDate;
     }
 
@@ -274,7 +277,11 @@
         var diff_ms = Date.now() - dob.getTime();
         var age_dt = new Date(diff_ms);
         var age = Math.abs(age_dt.getUTCFullYear() - 1970);
-        return age.toString().split("").map(x => changeToMmDigit(x)).join("") + getConvertedText('နှစ်');
+        var mmYear = 'နှစ်';
+        if (!(detector.getZawgyiProbability(mmYear) > 0.05)) {
+          mmYear = converter.unicodeToZawgyi(mmYear);
+        }
+        return age.toString().split("").map(x => changeToMmDigit(x)).join("") + mmYear;
     }
 
     async function generatePdf() {
@@ -422,7 +429,7 @@
         size: 11,
         font: customFont,
       })
-      firstPage.drawText(`${getConvertedText(getMmDate('textinput5'))} (${calculateAge(new Date(app.data['textinput5']))})`, {
+      firstPage.drawText(`${getMmDate('textinput5')} (${calculateAge(new Date(app.data['textinput5']))})`, {
         x: 310,
         y: 486,
         size: 11,
@@ -536,7 +543,7 @@
         size: 11,
         font: customFont,
       })
-      firstPage.drawText(getConvertedText(getMmDate('textinput12')), {
+      firstPage.drawText(getMmDate('textinput12'), {
         x: 110,
         y: 145,
         size: 11,
