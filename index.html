@@ -238,18 +238,20 @@
       return detector.getZawgyiProbability(myanmarTextInputs.map(x => app.data[x]).join("")) > 0.05;
     }
 
-    function getZawgyi(mmText) {
-      if (!(detector.getZawgyiProbability(mmText) > 0.05)) {
-        mmText = converter.unicodeToZawgyi(mmText);
-      }
-      return mmText;
-    }
-
-    function getConvertedText(mm) {
+    /*ဖြည့်ထားတဲ့ inputs တွေပေါ်မူတည်တဲ့ zawgyi လားဆုံးဖြတ်မှု*/
+    function getZawgyiOnInputs(mm) {
       if (!isZawgyi()) {
         mm = converter.unicodeToZawgyi(mm);
       }
       return mm;
+    }
+
+    /*function param မှာပေးလိုက်တဲ့ text ပေါ်မူတည်တဲ့ zawgyi လားဆုံးဖြတ်မှု*/
+    function getZawgyiOnText(mmText) {
+      if (!(detector.getZawgyiProbability(mmText) > 0.05)) {
+        mmText = converter.unicodeToZawgyi(mmText);
+      }
+      return mmText;
     }
 
     function changeToMmDigit(char) {
@@ -274,7 +276,7 @@
       }
       let mmDate = app.data[textinput].split("-").map(x => parseInt(x)).join("-").replace(/(\d{4})-(\d{1,2})-(\d{1,2})/, "$3ရက်/$2လ/$1ခုနှစ်").split("").map(x => changeToMmDigit(x)).join("");
       console.log(`mmDate`, mmDate);
-      return getZawgyi(mmDate);
+      return getZawgyiOnText(mmDate);
     }
 
     function calculateAge(dob) {
@@ -282,7 +284,7 @@
         var age_dt = new Date(diff_ms);
         var age = Math.abs(age_dt.getUTCFullYear() - 1970);
         var mmYear = 'နှစ်';
-        return age.toString().split("").map(x => changeToMmDigit(x)).join("") + getZawgyi(mmYear);
+        return age.toString().split("").map(x => changeToMmDigit(x)).join("") + getZawgyiOnText(mmYear);
     }
 
     async function generatePdf() {
@@ -347,7 +349,7 @@
       //   font: helveticaFont,
       //   rotate: degrees(-45),
       // })
-      firstPage.drawText(getConvertedText(app.data['textinput1']), {
+      firstPage.drawText(getZawgyiOnInputs(app.data['textinput1']), {
         x: 90,
         y: 680,
         size: 11,
@@ -368,7 +370,7 @@
           font: customFont,
         })
       }
-      firstPage.drawText(getConvertedText(app.data['textinput2']), {
+      firstPage.drawText(getZawgyiOnInputs(app.data['textinput2']), {
         x: 195,
         y: 655,
         size: 11,
@@ -411,20 +413,20 @@
         })
       }
 
-      firstPage.drawText(getConvertedText(app.data['textinput2']), {
+      firstPage.drawText(getZawgyiOnInputs(app.data['textinput2']), {
         x: 310,
         y: 560,
         size: 11,
         font: customFont,
       })
-      firstPage.drawText(getConvertedText(app.data['textinput3']), {
+      firstPage.drawText(getZawgyiOnInputs(app.data['textinput3']), {
       // firstPage.drawText('ရခိုင္', {
         x: 310,
         y: 535,
         size: 11,
         font: customFont,
       })
-      firstPage.drawText(getConvertedText(app.data['textinput4']), {
+      firstPage.drawText(getZawgyiOnInputs(app.data['textinput4']), {
         x: 310,
         y: 510,
         size: 11,
@@ -436,26 +438,26 @@
         size: 11,
         font: customFont,
       })
-      firstPage.drawText(getConvertedText(app.data['textinput6']), {
+      firstPage.drawText(getZawgyiOnInputs(app.data['textinput6']), {
         x: 310,
         y: 461,
         size: 11,
         font: customFont,
       })
-      firstPage.drawText(getConvertedText(app.data['textinput7']), {
+      firstPage.drawText(getZawgyiOnInputs(app.data['textinput7']), {
         x: 310,
         y: 436,
         size: 11,
         font: customFont,
       })
-      firstPage.drawText(getConvertedText(app.data['textinput8']), {
+      firstPage.drawText(getZawgyiOnInputs(app.data['textinput8']), {
         x: 364,
         y: 407,
         size: 11,
         font: customFont,
       })
       // firstPage.drawText('သမိန္ဘရမ္း', {
-      firstPage.drawText(getConvertedText(app.data['textinput9']), {
+      firstPage.drawText(getZawgyiOnInputs(app.data['textinput9']), {
         x: 130,
         y: 387,
         size: 8,
@@ -477,7 +479,7 @@
           font: customFont,
         })
       }
-      firstPage.drawText(getConvertedText(app.data['textinput10']), {
+      firstPage.drawText(getZawgyiOnInputs(app.data['textinput10']), {
         x: 272,
         y: 387,
         size: 8,
@@ -498,14 +500,14 @@
           font: customFont,
         })
       }
-      firstPage.drawText(getConvertedText(app.data['textinput1']), {
+      firstPage.drawText(getZawgyiOnInputs(app.data['textinput1']), {
         x: 130,
         y: 362,
         size: 8,
         font: customFont,
       })
       // firstPage.drawText('တနသၤာရီ', {
-      firstPage.drawText(getConvertedText(app.data['textinput11']), {
+      firstPage.drawText(getZawgyiOnInputs(app.data['textinput11']), {
         x: 260,
         y: 362,
         size: 8,
