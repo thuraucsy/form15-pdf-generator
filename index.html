@@ -238,6 +238,13 @@
       return detector.getZawgyiProbability(myanmarTextInputs.map(x => app.data[x]).join("")) > 0.05;
     }
 
+    function getZawgyi(mmText) {
+      if (!(detector.getZawgyiProbability(mmText) > 0.05)) {
+        mmText = converter.unicodeToZawgyi(mmText);
+      }
+      return mmText;
+    }
+
     function getConvertedText(mm) {
       if (!isZawgyi()) {
         mm = converter.unicodeToZawgyi(mm);
@@ -267,10 +274,7 @@
       }
       let mmDate = app.data[textinput].split("-").map(x => parseInt(x)).join("-").replace(/(\d{4})-(\d{1,2})-(\d{1,2})/, "$3ရက်/$2လ/$1ခုနှစ်").split("").map(x => changeToMmDigit(x)).join("");
       console.log(`mmDate`, mmDate);
-      if (!(detector.getZawgyiProbability(mmDate) > 0.05)) {
-        mmDate = converter.unicodeToZawgyi(mmDate);
-      }
-      return mmDate;
+      return getZawgyi(mmDate);
     }
 
     function calculateAge(dob) {
@@ -278,10 +282,7 @@
         var age_dt = new Date(diff_ms);
         var age = Math.abs(age_dt.getUTCFullYear() - 1970);
         var mmYear = 'နှစ်';
-        if (!(detector.getZawgyiProbability(mmYear) > 0.05)) {
-          mmYear = converter.unicodeToZawgyi(mmYear);
-        }
-        return age.toString().split("").map(x => changeToMmDigit(x)).join("") + mmYear;
+        return age.toString().split("").map(x => changeToMmDigit(x)).join("") + getZawgyi(mmYear);
     }
 
     async function generatePdf() {
