@@ -528,19 +528,19 @@
           font: customFont,
         })
       }
-      firstPage.drawText(app.data.textarea.split("\n").length >= 1 ? app.data.textarea.split("\n")[0] : '', {
+      firstPage.drawText(app.data.textarea.split("\n").length >= 1 ? getZawgyiOnInputs(app.data.textarea.split("\n")[0]) : '', {
         x: 320,
         y: 287,
         size: 11,
         font: customFont,
       })
-      firstPage.drawText(app.data.textarea.split("\n").length >= 2 ? app.data.textarea.split("\n")[1] : '', {
+      firstPage.drawText(app.data.textarea.split("\n").length >= 2 ? getZawgyiOnInputs(app.data.textarea.split("\n")[1]) : '', {
         x: 320,
         y: 262,
         size: 11,
         font: customFont,
       })
-      firstPage.drawText(app.data.textarea.split("\n").length >= 3 ? app.data.textarea.split("\n")[2] : '', {
+      firstPage.drawText(app.data.textarea.split("\n").length >= 3 ? getZawgyiOnInputs(app.data.textarea.split("\n")[2]) : '', {
         x: 130,
         y: 237,
         size: 11,
