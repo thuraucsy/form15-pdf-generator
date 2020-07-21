@@ -8,7 +8,7 @@
   <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/earlyaccess/tharlon.css" rel="stylesheet">
   <style>
-    .mm-font {
+    .mm-font, label, .form-control::placeholder, select.form-control {
       font-family: 'Tharlon', sans-serif;
     }
     .container {
@@ -35,13 +35,13 @@
 
             <!-- Text input-->
             <div class="form-group">
-              <label class="col-md-6 control-label mm-font" for="textinput1">မြို့နယ်ကော်မရှင်အဖွဲ့ခွဲ</label>
+              <label class="col-md-6 control-label" for="textinput1">မြို့နယ်ကော်မရှင်အဖွဲ့ခွဲ</label>
               <div class="col-md-6">
                 <input id="textinput1" name="textinput1" type="text" placeholder="တာမွေ" class="form-control input-md" v-model="data.textinput1" v-on:change="saveToLocalStorage">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-6 control-label mm-font" for="radios">ကျား/မ</label>
+              <label class="col-md-6 control-label" for="radios">ကျား/မ</label>
               <div class="col-md-6">
                 <label class="radio-inline" for="radios-0">
                   <input type="radio" name="radios" id="radios-0" value="1" v-model="data.radio" v-on:change="saveToLocalStorage">
@@ -54,43 +54,43 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-6 control-label mm-font" for="textinput2">အမည်</label>
+              <label class="col-md-6 control-label" for="textinput2">အမည်</label>
               <div class="col-md-6">
                 <input id="textinput2" name="textinput2" type="text" placeholder="အောင်အောင်" class="form-control input-md" v-model="data.textinput2" v-on:change="saveToLocalStorage">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-6 control-label mm-font" for="textinput3">တိုင်းရင်းသားလူမျိုး</label>
+              <label class="col-md-6 control-label" for="textinput3">တိုင်းရင်းသားလူမျိုး</label>
               <div class="col-md-6">
                 <input id="textinput3" name="textinput3" type="text" placeholder="ဗမာ" class="form-control input-md" v-model="data.textinput3" v-on:change="saveToLocalStorage">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-6 control-label mm-font" for="textinput4">မှတ်ပုံတင်အမှတ်</label>
+              <label class="col-md-6 control-label" for="textinput4">မှတ်ပုံတင်အမှတ်</label>
               <div class="col-md-6">
                 <input id="textinput4" name="textinput4" type="text" placeholder="၁၂/xxx(x)123456" class="form-control input-md" v-model="data.textinput4" v-on:change="saveToLocalStorage">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-6 control-label mm-font" for="textinput5">မွေးသက္ကရာဇ်: </label>
+              <label class="col-md-6 control-label" for="textinput5">မွေးသက္ကရာဇ်: </label>
               <div class="col-md-6">
                 <input id="textinput5" name="textinput5" type="date" class="form-control input-md" v-model="data.textinput5" v-on:change="saveToLocalStorage">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-6 control-label mm-font" for="textinput6">အဘအမည်</label>
+              <label class="col-md-6 control-label" for="textinput6">အဘအမည်</label>
               <div class="col-md-6">
                 <input id="textinput6" name="textinput6" type="text" placeholder="ဦးအောင်" class="form-control input-md" v-model="data.textinput6" v-on:change="saveToLocalStorage">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-6 control-label mm-font" for="textinput7">အမိအမည်</label>
+              <label class="col-md-6 control-label" for="textinput7">အမိအမည်</label>
               <div class="col-md-6">
                 <input id="textinput7" name="textinput7" type="text" placeholder="ဒေါ်မြ" class="form-control input-md" v-model="data.textinput7" v-on:change="saveToLocalStorage">
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-6 control-label mm-font" for="textinput8">နေရပ်လိပ်စာ အမှတ်</label>
+              <label class="col-md-6 control-label" for="textinput8">နေရပ်လိပ်စာ အမှတ်</label>
               <div class="col-md-6">
                 <input id="textinput8" name="textinput8" type="text" placeholder="၂၀" class="form-control input-md" v-model="data.textinput8" v-on:change="saveToLocalStorage">
               </div>
@@ -99,7 +99,7 @@
               <div class="col-md-6">
                 <input id="textinput9" name="textinput9" type="text" placeholder="ဇောတိက" class="form-control input-md" v-model="data.textinput9" v-on:change="saveToLocalStorage">
               </div>
-              <label class="col-md-3 control-label mm-font" for="selectbasic1">လမ်း/ကျေးရွာ</label>
+              <label class="col-md-3 control-label" for="selectbasic1">လမ်း/ကျေးရွာ</label>
               <div class="col-md-3">
                 <select id="selectbasic1" name="selectbasic1" class="form-control" v-model="data.selectbasic1" v-on:change="saveToLocalStorage">
                   <option value="1">လမ်း</option>
@@ -111,7 +111,7 @@
               <div class="col-md-6">
                 <input id="textinput10" name="textinput10" type="text" placeholder="မလွှကုန်း" class="form-control input-md" v-model="data.textinput10" v-on:change="saveToLocalStorage">
               </div>
-              <label class="col-md-3 control-label mm-font" for="selectbasic2">ရပ်ကွက်/ကျေးရွာအုပ်စု</label>
+              <label class="col-md-3 control-label" for="selectbasic2">ရပ်ကွက်/ကျေးရွာအုပ်စု</label>
               <div class="col-md-3">
                 <select id="selectbasic2" name="selectbasic2" class="form-control" v-model="data.selectbasic2" v-on:change="saveToLocalStorage">
                   <option value="1">ရပ်ကွက်</option>
@@ -123,13 +123,13 @@
               <div class="col-md-6">
                 <input id="textinput13" name="textinput13" type="text" placeholder="တာမွေ" class="form-control input-md" v-model="data.textinput1" v-on:change="saveToLocalStorage">
               </div>
-              <label class="col-md-6 control-label mm-font" for="textinput13">မြို့နယ်</label>
+              <label class="col-md-6 control-label" for="textinput13">မြို့နယ်</label>
             </div>
             <div class="form-group">
               <div class="col-md-6">
                 <input id="textinput11" name="textinput11" type="text" placeholder="ရန်ကုန်" class="form-control input-md" v-model="data.textinput11" v-on:change="saveToLocalStorage">
               </div>
-              <label class="col-md-3 control-label mm-font" for="selectbasic3">တိုင်းဒေသကြီး/ပြည်နယ်</label>
+              <label class="col-md-3 control-label" for="selectbasic3">တိုင်းဒေသကြီး/ပြည်နယ်</label>
               <div class="col-md-3">
                 <select id="selectbasic3" name="selectbasic3" class="form-control" v-model="data.selectbasic3" v-on:change="saveToLocalStorage">
                   <option value="1">တိုင်းဒေသကြီး</option>
@@ -138,19 +138,19 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="col-md-3 control-label mm-font" for="textarea">ပြည်ပနေရပ်လိပ်စာ<br>(အင်္ဂလိပ်လိုဖြင့်ဖြည့်ပေးပါရန်နှင့် အင်္ဂလိပ်စာလုံး အလုံး၃၀ခန့်ပြီးတိုင်း တစ်ကြောင်းဆင်းပြီး ရေးပေးပါရန်)</label>
+              <label class="col-md-3 control-label" for="textarea">ပြည်ပနေရပ်လိပ်စာ<br>(အင်္ဂလိပ်လိုဖြင့်ဖြည့်ပေးပါရန်နှင့် အင်္ဂလိပ်စာလုံး အလုံး၃၀ခန့်ပြီးတိုင်း တစ်ကြောင်းဆင်းပြီး ရေးပေးပါရန်)</label>
               <div class="col-md-9">
                 <textarea class="form-control" id="textarea" name="textarea" rows="3" v-model="data.textarea" v-on:change="saveToLocalStorage"></textarea>
               </div>
            </div>
            <div class="form-group">
-             <label class="col-md-6 control-label mm-font" for="textinput12">ဖောင်တင်ရက်စွဲ: </label>
+             <label class="col-md-6 control-label" for="textinput12">ဖောင်တင်ရက်စွဲ: </label>
              <div class="col-md-6">
                <input id="textinput12" name="textinput12" type="date" class="form-control input-md" v-model="data.textinput12" v-on:change="saveToLocalStorage">
              </div>
            </div>
            <div class="form-group">
-             <label class="col-md-6 control-label mm-font" for="selectbasic">လက်မှတ်</label>
+             <label class="col-md-6 control-label" for="selectbasic">လက်မှတ်</label>
              <div class="col-md-6">
                <canvas id="canvas" width="300" height="150" style="background: #eee;"></canvas>
                <button type="button" class="btn btn-danger mm-font" name="button" onclick="clearSignature();">လက်မှတ်ပြန်ဖျက်ရန်</button>
